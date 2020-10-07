@@ -18,7 +18,9 @@ export class giphyApi extends apiBase {
 
             return this.sucess(result);
         } catch (ex) {
-            throw ex.message;
+            const isFailed = ex.message.search('failed');
+            if (isFailed > -1) return this.error(Status.FAILED, 'sorry, api giphy service is not available ');
+            return this.criticalError(ex.message);
         }
 
     }
