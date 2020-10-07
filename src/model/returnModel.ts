@@ -1,6 +1,6 @@
 export class returnModel {
     private message: string;
-    private status: Number;
+    private status: number;
     private data: Object;
 
     constructor(){
@@ -15,10 +15,10 @@ export class returnModel {
     public set $message(value: string) {
         this.message = value;
     }
-    public get $status(): Number {
+    public get $status(): number {
         return this.status;
     }
-    public set $status(value: Number) {
+    public set $status(value: number) {
         this.status = value;
     }
     public get $data(): Object {
