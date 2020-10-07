@@ -1,4 +1,5 @@
 import { apiBase } from '../serviceFramework/apiBase';
+import { Status } from '../interface/Status';
 const axios = require('axios');
 
 export class puppyApi extends apiBase {
@@ -7,11 +8,11 @@ export class puppyApi extends apiBase {
         super();
     }
 
-    public async getRecipesList(ingredientList: Array<String>): Promise<any> {
+    public async getRecipesList(ingredientList: string[]): Promise<any> {
         try {
-            if (!ingredientList) throw this.error(400, 'ingredientList is NULL');
-            if (ingredientList.length < 3) throw this.error(400, 'ingredientList parameters is missing');
-            const url = `http://www.recipepuppy.com/api/?i=onions,garlic&q=omelet&p=3`
+            if (!ingredientList) return this.error(Status.FAILED, 'ingredientList is NULL');
+
+            const url = `http://www.recipepuppy.com/api/?i=${ingredientList}`;
             const result = await axios.get(url)
                 .then(function (response) {
                     // handle success
@@ -20,9 +21,9 @@ export class puppyApi extends apiBase {
                 .catch(function (error) {
                     // handle error
                     throw error;
-                })
+                });
 
-            return result;
+            return this.sucess(result);
         } catch (ex) {
             throw ex.message;
         }
