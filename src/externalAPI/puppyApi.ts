@@ -14,14 +14,8 @@ export class puppyApi extends apiBase {
 
             const url = `http://www.recipepuppy.com/api/?i=${ingredientList}`;
             const result = await axios.get(url)
-                .then(function (response) {
-                    // handle success
-                    return response['data'];
-                })
-                .catch(function (error) {
-                    // handle error
-                    throw error;
-                });
+                .then(response => response['data'])
+                .catch(error => { throw error; });
 
             return this.sucess(result);
         } catch (ex) {
