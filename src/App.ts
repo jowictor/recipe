@@ -1,11 +1,8 @@
-import * as path from 'path';
 import * as express from 'express';
 import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
 import * as recipeRouter from './router/recipeRouter';
 import * as cors from 'cors';
-
-const cron = require('node-cron');
 
 // Create config EXpress
 class App {
@@ -24,9 +21,8 @@ class App {
         this.express.use(bodyParser.urlencoded({ extended: false }));
     }
 
-    //API config with EndPoint
     private routes(): void {
-        let router = express.Router();
+        const router = express.Router();
 
         router.get('/', (req, res, next) => {
             res.json({
@@ -34,7 +30,7 @@ class App {
             });
         });
         this.express.use('/', router);
-        this.express.use('/api/v1/recipe', recipeRouter.default);
+        this.express.use('/recipes', recipeRouter.default);
     }
 
 }
