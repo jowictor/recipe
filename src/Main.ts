@@ -11,6 +11,16 @@ async function main(): Promise<void> {
         server.on('error', onError);
         server.on('listening', onListening);
 
+        require('dotenv').config({ path: 'config/.env' });
+
+        if (!process.env.PUPPY_API ||
+            !process.env.GIPHY_API ||
+            !process.env.GIPHY_API_KEY) {
+            console.log('Environment improperly configured');
+            console.log('Please configure the environment in the config folder');
+            exception();
+        }
+
         function normalizePort(val: number | string): number | string | boolean {
             try {
                 const port: number = (typeof val === 'string') ? parseInt(val, 10) : val;
@@ -34,7 +44,6 @@ async function main(): Promise<void> {
             try {
                 if (error.syscall !== 'listen') throw error;
 
-
                 const bind = (typeof getExposePort() === 'string') ? 'Pipe ' + getExposePort() : 'Port ' + getExposePort();
                 switch (error.code) {
                     case 'EACCES':
@@ -54,12 +63,10 @@ async function main(): Promise<void> {
         }
 
         function onListening(): void {
-            let addr = server.address();
-            let bind = (typeof addr === 'string') ? `pipe ${addr}` : `port ${addr.port}`;
+            const addr = server.address();
+            const bind = (typeof addr === 'string') ? `pipe ${addr}` : `port ${addr.port}`;
             console.log(`Listening on ${bind}`);
         }
-
-
 
         function getExposePort() {
             return normalizePort(process.env.PORT || 3000);
@@ -69,7 +76,6 @@ async function main(): Promise<void> {
         exception();
     }
 }
-
 
 function exception(): void {
     process.exit(666);
