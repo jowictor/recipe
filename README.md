@@ -52,13 +52,13 @@ O projeto depende de três variáveis armazenadas em um arquivo de ambiente (`.e
 
 As variáveis são:
 - `GIPHY_API`: URL da API de buscas do Giphy. **Obrigatória**.
-> Padrão: http://api.giphy.com/v1/gifs/search
+> Padrão: http://api.giphy.com/v1/gifs/search?q=
 
 - `GIPHY_API_KEY`: chave de acesso à API do Giphy. **Obrigatória**.
 > Chaves podem ser solicitadas seguindo a documentação disponível em: https://developers.giphy.com/docs/
 
 - `PUPPY_API`: URL da API pública do Recipe Puppy. **Obrigatória**.
-> Padrão: http://www.recipepuppy.com/api/
+> Padrão: http://www.recipepuppy.com/api/?i=
 
 Um arquivo de modelo é disponibilizado em `config/.env.example`. Basta criar uma cópia **Não esqueça deve ficar na mesma pasta ;)**, editar e renomear.
 Aah lembre-se de ativar a opção para exibir itens ocultos nesta pasta.
