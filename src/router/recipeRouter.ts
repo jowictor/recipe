@@ -23,8 +23,7 @@ export class recipeRouter {
     }
 
     public init() {
-        this.router.get('/list/:ingredient_1/:ingredient_2/:ingredient_3', this.getRecipesListPublic);
-
+        this.router.get('/:ingredient_1/:ingredient_2/:ingredient_3', this.getRecipesListPublic);
     }
 }
 
