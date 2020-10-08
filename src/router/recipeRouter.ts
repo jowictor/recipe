@@ -12,7 +12,7 @@ export class recipeRouter {
     public async getRecipesListPublic(req: Request, res: Response) {
         try {
 
-            const reqParams = Object.keys(req.params).map(paramsItem => req.params[paramsItem]);
+            const reqParams = Object.keys(req.params).map(paramsItem => req.params[paramsItem]).filter(item => item);
             const repository = new recipeService();
             const result: IReturnServiceFramework = await repository.getRecipeList(reqParams);
             res.send(result);
@@ -23,7 +23,7 @@ export class recipeRouter {
     }
 
     public init() {
-        this.router.get('/:ingredient_1/:ingredient_2/:ingredient_3', this.getRecipesListPublic);
+        this.router.get('/:ingredient_1/:ingredient_2?/:ingredient_3?', this.getRecipesListPublic);
     }
 }
 

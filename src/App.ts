@@ -26,7 +26,7 @@ class App {
 
         router.get('/', (req, res, next) => {
             res.json({
-                message: 'Hello Welcome to recipe service manager!'
+                message: "Hello it's a pleasure to meet you!"
             });
         });
         this.express.use('/', router);
