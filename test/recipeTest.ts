@@ -6,7 +6,7 @@ const recipeServ = new recipeService();
 
 describe('Recipe Service tests', async () => {
 
-    it('Test recipepuppy ', async () => {
+    it('Integrity test', async () => {
 
         assert(recipeServ);
         const rc = await recipeServ.getRecipeList(['onions', 'garlic', 'omelet']);

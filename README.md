@@ -61,6 +61,7 @@ As variáveis são:
 > Padrão: http://www.recipepuppy.com/api/
 
 Um arquivo de modelo é disponibilizado em `config/.env.example`. Basta criar uma cópia **Não esqueça deve ficar na mesma pasta ;)**, editar e renomear.
+Aah lembre-se de ativar a opção para exibir itens ocultos nesta pasta.
 
 > Se alguma das variáveis não for preenchida, será lançado um erro `Environment improperly configured, Please configure the environment in the config folder`.
 
@@ -75,7 +76,7 @@ Respeitando a seguinte chamada:
 ```
 http://{HOST}/recipes/:{ingredient_1}/:{ingredient_2}?/:{ingredient_3}?
 ```
-A partir dos ingredientes informados, é realizada uma consulta à API do Recipe Puppy, e consultas à API do Giphy baseadas no título de cada receita.
+A partir dos ingredientes informados, é realizada uma consulta à API do Recipe Puppy, e consultamos à API do Giphy baseadas no título de cada receita.
 
 **Exemplo:**
 
@@ -118,4 +119,12 @@ A resposta desta requisição será semelhante à seguinte:
     }
         
 }
+```
+
+**Teste unitaro:**
+Foi implementado teste unitário onde ele valida o resultado retornado pela API, basta executar o comando abaixo:
+
+
+```shell
+npm test
 ```
