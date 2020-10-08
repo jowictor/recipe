@@ -11,8 +11,9 @@ export class puppyApi extends apiBase {
     public async getRecipesList(ingredientList: string[]): Promise<any> {
         try {
             if (!ingredientList) return this.error(Status.FAILED, 'ingredientList is NULL');
-
-            const url = `http://www.recipepuppy.com/api/?i=${ingredientList}`;
+            console.log('teste 123564')
+            const url = `${process.env.PUPPY_API}${ingredientList}`;
+            console.log(url)
             const result = await axios.get(url)
                 .then(response => response['data'])
                 .catch(error => { throw error; });
