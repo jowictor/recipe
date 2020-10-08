@@ -121,7 +121,8 @@ A resposta desta requisição será semelhante à seguinte:
 }
 ```
 
-**Teste unitaro:**
+### Teste unitaro
+
 Foi implementado teste unitário onde ele valida o resultado retornado pela API, basta executar o comando abaixo:
 
 
